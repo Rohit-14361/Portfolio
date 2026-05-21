@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Confirmed!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      padding: 40px 16px;
+    }
+
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      padding: 52px 32px 40px;
+      background: linear-gradient(135deg, #0a1628 0%, #0e2444 50%, #0a3d62 100%);
+      border-radius: 24px 24px 0 0;
+      border: 1px solid rgba(56,189,248,0.15);
+      border-bottom: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .checkmark-circle {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 40px rgba(56,239,125,0.3);
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      color: #0a0a0a;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header p {
+      color: rgba(255,255,255,0.5);
+      font-size: 15px;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .amount-card {
+      background: linear-gradient(135deg, #050d1a 0%, #0a1628 100%);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin: 0 -1px;
+      text-align: center;
+    }
+
+    .amount-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(56,189,248,0.6);
+      margin-bottom: 10px;
+    }
+
+    .amount-value {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .amount-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .body {
+      background: #111111;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: none;
+      padding: 36px 32px;
+    }
+
+    .greeting {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(129,140,248,0.04));
+      border: 1px solid rgba(56,189,248,0.15);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    .project-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(56,189,248,0.6);
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+
+    .info-key {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+    }
+
+    .info-val {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(74,222,128,0.12);
+      border: 1px solid rgba(74,222,128,0.3);
+      color: #4ade80;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .what-next {
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+
+    .what-next-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .next-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .next-item:last-child { margin-bottom: 0; }
+
+    .next-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .next-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 28px 0;
+    }
+
+    .timestamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      padding: 24px 32px;
+      text-align: center;
+    }
+
+    .footer p {
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .footer .brand {
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="checkmark-circle">🎉</div>
+      <div class="badge">Payment Confirmed</div>
+      <h1>Your Payment is Complete!</h1>
+      <p>We've successfully received your payment for the project below.</p>
+    </div>
+
+    <!-- AMOUNT -->
+    <div class="amount-card">
+      <div class="amount-label">Amount Paid</div>
+      <div class="amount-value">{{amount}}</div>
+      <div class="amount-note">Secure payment via Razorpay · Verified ✅</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+      <div class="greeting">Hey {{userName}},</div>
+      <p class="intro-text">
+        Your payment has been confirmed and we're all set to get started! 🚀 Thank you for trusting us with your project. Here's a summary of your transaction.
+      </p>
+
+      <div class="project-card">
+        <div class="project-label">🗂️ Project</div>
+        <div class="project-name">{{projectName}}</div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-key">Payment ID</div>
+          <div class="info-val">{{paymentId}}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-key">Order ID</div>
+          <div class="info-val">{{orderId}}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-key">Amount</div>
+          <div class="info-val">{{amount}}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-key">Status</div>
+          <div class="info-val"><span class="status-badge">✅ Completed</span></div>
+        </div>
+      </div>
+
+      <div class="what-next">
+        <div class="what-next-title">🚀 What happens next?</div>
+        <div class="next-item">
+          <div class="next-icon">🔍</div>
+          <div class="next-text">Your project requirements have been recorded and we'll begin work shortly.</div>
+        </div>
+        <div class="next-item">
+          <div class="next-icon">📊</div>
+          <div class="next-text">You can track your project status anytime from your dashboard.</div>
+        </div>
+        <div class="next-item">
+          <div class="next-icon">📬</div>
+          <div class="next-text">You'll receive progress updates at <strong>{{userEmail}}</strong>.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="text-align:center;">
+        <div class="timestamp">🕐 {{date}}</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>This payment was processed securely through Razorpay for <span class="brand">My Portfolio</span>.<br/>
+      Keep this email as your payment receipt for future reference.</p>
+    </div>
+  </div>
+</body>
+</html>
