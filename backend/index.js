@@ -10,7 +10,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-    origin:"*"
+    origin:["https://portfolio-rdvr.onrender.com","http://localhost:3000"]
 }));
 
 // Razorpay webhook route needs raw body BEFORE express.json()
