@@ -10,7 +10,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-    origin:["https://portfolio-rdvr.onrender.com","http://localhost:3000"]
+    origin:["https://portfolio-zeta-rust-46y2evpq6v.vercel.app/","http://localhost:3000"]
 }));
 
 // Razorpay webhook route needs raw body BEFORE express.json()
