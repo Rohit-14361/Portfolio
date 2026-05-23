@@ -8,9 +8,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
 app.use(cors({
-    origin:["https://portfolio-zeta-rust-46y2evpq6v.vercel.app","http://localhost:3000"]
+  origin: [
+    "https://portfolio-56eaqzkyg-rohit-14361s-projects.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true
 }));
 
 // Razorpay webhook route needs raw body BEFORE express.json()
