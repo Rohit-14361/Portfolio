@@ -15,7 +15,7 @@ const submitContact = async (req, res) => {
     // Save to DB
     const contact = await ContactUs.create({ name, email, message });
 
-    // Send emails (non-blocking: don't fail the request if email fails)
+    // Send emails
     try {
       await Promise.all([
         sendContactEmailToAdmin({ name, email, message }),
@@ -23,6 +23,10 @@ const submitContact = async (req, res) => {
       ]);
     } catch (emailErr) {
       console.error('Email sending failed:', emailErr.message);
+      return res.status(500).json({
+        message: 'Message saved, but email could not be sent. Please check email configuration.',
+        error: emailErr.message,
+      });
     }
 
     res.status(201).json({ message: 'Message sent successfully!', contact });

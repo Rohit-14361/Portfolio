@@ -31,6 +31,7 @@ const paymentRoutes = require('./routes/payments');
 const portfolioRoutes = require('./routes/portfolio');
 const serviceRoutes = require('./routes/services');
 const contactRoutes = require('./routes/contact');
+const feedbackRoutes = require('./routes/feedback');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
@@ -38,9 +39,11 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+

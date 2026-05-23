@@ -45,7 +45,7 @@ const sendContactEmailToUser = async ({ name, email, message }) => {
   const html = loadTemplate('contactUsUser', { name, email, message, date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) });
 
   await transporter.sendMail({
-    from: `"Portfolio" <${process.env.EMAIL_USER}>`,
+    from: `"Team" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: `✅ We received your message, ${name}!`,
     html,
@@ -66,7 +66,7 @@ const sendPaymentEmailToAdmin = async ({ userName, userEmail, projectName, amoun
   });
 
   await transporter.sendMail({
-    from: `"Portfolio Payments" <${process.env.EMAIL_USER}>`,
+    from: `"Payments" <${process.env.EMAIL_USER}>`,
     to: process.env.ADMIN_EMAIL,
     subject: `💰 Payment Received – ${projectName}`,
     html,
@@ -87,7 +87,7 @@ const sendPaymentEmailToUser = async ({ userName, userEmail, projectName, amount
   });
 
   await transporter.sendMail({
-    from: `"Portfolio" <${process.env.EMAIL_USER}>`,
+    from: `"Payment" <${process.env.EMAIL_USER}>`,
     to: userEmail,
     subject: `🎉 Payment Confirmed – ${projectName}`,
     html,
