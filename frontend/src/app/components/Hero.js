@@ -15,27 +15,9 @@ export default function Hero() {
           </h1>
 
           <p className="text-zinc-400 text-lg leading-8 mt-8">
-            MERN Stack, Next.js, TypeScript, AWS Deployment,
-            SEO, Google Ads & Analytics.
+            Full Stack, Next.js, TypeScript, AWS Deployment,
+            SEO, Google Ads & Mobile App Development.
           </p>
-
-          <div className="flex gap-5 mt-10">
-            <a
-              href="https://github.com"
-              target="_blank"
-              className="px-7 py-4 rounded-2xl bg-white text-black font-semibold"
-            >
-              GitHub
-            </a>
-
-            <a
-              href="https://www.linkedin.com/feed/"
-              target="_blank"
-              className="px-7 py-4 rounded-2xl border border-white/20"
-            >
-              LinkedIn
-            </a>
-          </div>
         </div>
       </div>
     </section>

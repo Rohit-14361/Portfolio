@@ -10,13 +10,21 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import OurTeamSection from "./components/OurTeamSection";
 import FeedbackSection from "./components/FeedbackSection";
+import DirectContactButtons from "./components/DirectContactButtons";
+
 
 export default function Home() {
   return (
     <main className="bg-black min-h-screen">
       <Navbar />
       <Hero />
+
+      <DirectContactButtons />
+
+
+
       <ServiceSection limit={3} />
+
       <ProjectSection />
 
       <OurTeamSection />
